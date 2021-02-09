@@ -1,9 +1,11 @@
-<% @post_image.each do |post| %>
+<% @post.each do |post| %>
 <div>
   <%#= attachment_image_tag post_image, :image %>
   <%#><p>投稿ユーザー画像：<%= image_tag('sample-author1.jpg') %></p>
-  <p>タイトル：<%= post.title %></p>
-  <p>本文：<%= post.body %></p>
+  
+  <%= link_to post.title, post_path(post) %>
+  
   <p>ユーザーネーム：<%#= post.user.name %></p>
+
 </div>
 <% end %>

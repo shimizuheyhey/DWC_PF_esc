@@ -1,20 +1,31 @@
 class PostsController < ApplicationController
   def new
-    @post_image = Post.new
+    @post = Post.new
   end
 
   def create
-    @post_image = Post.new(post_params)
-    @post_image.user_id = current_user.id
-    @post_image.save
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    @post.save
     redirect_to posts_path
   end
 
   def index
-     @post_image = Post.all
+     @post = Post.all
   end
 
   def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to posts_path
   end
 
   def destroy

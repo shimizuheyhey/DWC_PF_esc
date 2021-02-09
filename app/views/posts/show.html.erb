@@ -1,0 +1,6 @@
+post_mypage
+
+<%= link_to "投稿の編集", edit_post_path(@post) %>
+<p>タイトル：<%= @post.title %></p>
+
+<p>本文：<%= @post.body %></p>
