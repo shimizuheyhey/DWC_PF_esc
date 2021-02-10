@@ -12,7 +12,7 @@
   <body>
         <% if user_signed_in? %>
         <%= link_to '投稿フォーム', new_post_path %>
-        <%= link_to 'my page😍', user_path(current_user) %>
+        <%= link_to 'my page', user_path(current_user) %>
         <%= link_to '一覧', posts_path %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 devise_for :users
 
 root to: 'homes#top'
-resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update]
 resources :users, only: [:edit, :index, :show, :update]
+resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update, :destroy] do
+  resources :post_comments, only: [:create, :destroy]
+end
 end

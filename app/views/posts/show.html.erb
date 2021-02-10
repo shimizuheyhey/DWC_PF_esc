@@ -1,6 +1,11 @@
-post_mypage
+post
 
 <%= link_to "投稿の編集", edit_post_path(@post) %>
+<%= attachment_image_tag @post, :image %>
 <p>タイトル：<%= @post.title %></p>
 
 <p>本文：<%= @post.body %></p>
+
+  <% if @post.user == current_user %>
+    <%= link_to "削除", post_path(@post), method: :delete %>
+  <% end %>
