@@ -1,3 +1,7 @@
 user_mypage
 <%= link_to "マイページ編集", edit_user_path(@user) %>
 <th><%= @user.name %></th>
+
+<%= link_to "フォロー", user_followings(@user) %>
+
+<%= link_to "フォロワー", user_followers(@users) %>

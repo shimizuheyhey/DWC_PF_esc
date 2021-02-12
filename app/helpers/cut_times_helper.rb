@@ -1,0 +1,2 @@
+module CutTimesHelper
+end

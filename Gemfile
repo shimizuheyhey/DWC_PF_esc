@@ -65,3 +65,4 @@ gem 'bootstrap', '~> 4.5'
 gem "refile-mini_magick"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'devise'
+gem 'pry-byebug', group: :development

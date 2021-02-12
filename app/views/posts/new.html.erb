@@ -6,5 +6,12 @@
   <%= f.text_field :title %>
   <h4>本文</h4>
   <%= f.text_area :body %>
+<h5>CutTime</h5>
+<%= f.fields_for :cut_times, local:true do |f| %>
+  <h4>分</h4>
+  <%= f.number_field :minute %>
+  <h4>秒</h4>
+  <%= f.number_field :second %>
+  <% end %>
   <%= f.submit '投稿' %>
-<% end %>
+  <% end %>
