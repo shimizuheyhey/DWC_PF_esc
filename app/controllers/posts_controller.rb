@@ -6,15 +6,10 @@ class PostsController < ApplicationController
 
   def create
     #@post = Post.new(post_params)
-
     @post = Post.new(post_params)
-    #binding.pry
     @post.user_id = current_user.id
-
     cut_time = CutTime.new(cut_time_params[0])
     cut_time.user_id = current_user.id
-
-
     @post.cut_times << cut_time
 
     if @post.save
@@ -31,7 +26,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @time = @post.CutTime
+    @time = @post.cut_times
   end
 
   def edit

@@ -6,6 +6,8 @@ post
 
 <p>本文：<%= @post.body %></p>
 
+<%= @time.second %>
+
   <% if @post.user == current_user %>
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>

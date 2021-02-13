@@ -7,11 +7,11 @@
   <h4>本文</h4>
   <%= f.text_area :body %>
 <h5>CutTime</h5>
-<%= f.fields_for :cut_times, local:true do |ff| %>
+<%= f.fields_for :cut_times, local:true do |fa| %>
   <h4>分</h4>
-  <%= ff.number_field :minute %>
+  <%= fa.text_field :minute %>
   <h4>秒</h4>
-  <%= ff.number_field :second %>
+  <%= fa.text_field :second %>
   <% end %>
   <%= f.submit '投稿' %>
   <% end %>
