@@ -9,6 +9,19 @@ post edit
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
+  <h5>CutTime</h5>
+  <div class="form-group">
+<%= f.fields_for :cut_times, local:true do |fa| %>
+</div>
+  <h4>分</h4>
+  <div class="form-group">
+<%= fa.number_field :minute, min: 0, max: 59, value: "0" %>
+</div>
+  <h4>秒</h4>
+  <div class="form-group">
+<%= fa.number_field :second, min: 0, max: 99, value: "0" %>
+</div>
+<% end %>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>

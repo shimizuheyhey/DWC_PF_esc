@@ -3,10 +3,14 @@ post
 <%= link_to "投稿の編集", edit_post_path(@post) %>
 <%= attachment_image_tag @post, :image %>
 <p>タイトル：<%= @post.title %></p>
-
+  <% if @cut_time.minute == 0 && @cut_time.second == 0 %>
+<p>こちらの記事は短縮時間を設定していません</p>
+<% else %>
+<p>この記事のテクニックを用いれば<%= @cut_time.minute %>分<%= @cut_time.second %>秒時間を節約できます</p>
+<% end %>
 <p>本文：<%= @post.body %></p>
 
-<%= @time.second %>
+
 
   <% if @post.user == current_user %>
     <%= link_to "削除", post_path(@post), method: :delete %>
