@@ -1,6 +1,7 @@
 post
-
+<% if @post.user == current_user %>
 <%= link_to "投稿の編集", edit_post_path(@post) %>
+<% end %>
 <%= attachment_image_tag @post, :image %>
 <p>タイトル：<%= @post.title %></p>
   <% if @cut_time.minute == 0 && @cut_time.second == 0 %>
@@ -29,6 +30,12 @@ post
       <% end %>
     </p>
   <% end %>
+
+    <% if @post.bookmarked_by?(current_user) %>
+      <td><%= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %></td>
+    <% else %>
+      <td><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
+    <% end %>
 
 <div class="comments">
 <p>コメント件数：<%= @post.post_comments.count %></p>

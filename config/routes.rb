@@ -9,6 +9,7 @@ resources :users, only: [:edit, :index, :show, :update] do
   resource :relationships, only: [:create, :destroy]
   get 'followings' => 'relationships#followings', as: 'followings'
   get 'followers' => 'relationships#followers', as: 'followers'
+  get 'bookmark'
 end
 
 
@@ -16,5 +17,6 @@ resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update,
   resource :favorites, only: [:create, :destroy]
   resources :post_comments, only: [:create, :destroy]
   resources :cut_times, only: [:new, :create, :update]
+  resource :bookmarks, only: [:create, :destroy]
   end
 end

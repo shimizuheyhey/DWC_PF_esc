@@ -15,6 +15,7 @@
         <%= link_to 'my page', user_path(current_user) %>
         <%= link_to 'Post一覧', posts_path %>
         <%= link_to 'User一覧', users_path %>
+        <%= link_to 'お気に入り一覧', user_bookmark_path([:id]) %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>

@@ -15,6 +15,7 @@ has_many :post_comments, dependent: :destroy
 has_many :favorites, dependent: :destroy
 #cuttime
 has_many :cut_times, dependent: :destroy
+has_many :bookmarks, dependent: :destroy
 
   def follow(user_id)
     relationships.create(followed_id: user_id)
