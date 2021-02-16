@@ -18,9 +18,15 @@ class PostsController < ApplicationController
     end
   end
 
+#array = @post.pluck(:分数のカラム)
+#total01 = array.sum{ |num| num * 60 }
+#total02 = @post.pluck(:秒数のカラム).inject(:+)
+#total = total01 + total02
+
   def index
      @post = Post.all
      @tags = Post.tag_counts_on(:tags).most_used(20)
+     #@cut_time = @post.cut_times.first
   end
 
   def show

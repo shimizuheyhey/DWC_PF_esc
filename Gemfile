@@ -68,3 +68,4 @@ gem 'devise'
 gem 'pry-byebug', group: :development
 gem 'ransack'
 gem 'acts-as-taggable-on'
+gem 'jquery-rails'

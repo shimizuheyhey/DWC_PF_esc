@@ -1,7 +1,12 @@
 user_mypage
 <%= link_to "マイページ編集", edit_user_path(@user) %>
+プロフィール画像
+<%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'png' %>
 <th><%= @user.name %></th>
 <th><%= @user.body %></th>
+
+
+
 <%#= link_to "フォロー", user_followings(@user) %>
 
 <%#= link_to "フォロワー", user_followers(@users) %>
