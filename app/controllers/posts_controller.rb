@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
-    @cut_time = @post.cut_times.new
+    @cut_time = @post.cut_times.new(user_id: current_user.id )
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    cut_time = CutTime.new(cut_time_params["cut_times_attributes"]["0"])
-    cut_time.user_id = current_user.id
-    @post.cut_times << cut_time
+    #cut_time = CutTime.new(cut_time_params["cut_times_attributes"]["0"])
+    #cut_time.user_id = current_user.id
+    #@post.cut_times << cut_time
     if @post.save
       redirect_to posts_path
     else
+      #byebug
       render 'new'
     end
   end
@@ -30,15 +31,16 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @cut_time = @post.cut_times.find(params[:id])
+
   end
 
   def update
     @post = Post.find(params[:id])
-    @post.user_id = current_user.id
-    cut_time = CutTime.find(params[:id]),(cut_time_params["cut_times_attributes"]["0"])
-    cut_time.user_id = current_user.id
-    @post.cut_times << cut_time
+
+    #@post.user_id = current_user.id
+    #cut_time = CutTime.find(params[:id]),(cut_time_params["cut_times_attributes"]["0"])
+    #cut_time.user_id = current_user.id
+    #@post.cut_times << cut_time
 
     if @post.update(post_params)
     redirect_to posts_path
@@ -56,7 +58,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :body, :tag_list)
+    params.require(:post).permit(:title, :image, :body, :tag_list, cut_times_attributes: [:id, :user_id, :post_id, :minute, :second] )
   end
 
   def cut_time_params

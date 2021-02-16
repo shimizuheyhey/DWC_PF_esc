@@ -20,6 +20,7 @@ post edit
   <h4>秒</h4>
   <div class="form-group">
 <%= fa.number_field :second, min: 0, max: 99, value: fa.object.second %>
+<%= fa.hidden_field :user_id %>
 </div>
 <% end %>
   <div class="form-group">
