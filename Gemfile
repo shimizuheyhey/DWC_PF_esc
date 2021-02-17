@@ -69,3 +69,7 @@ gem 'pry-byebug', group: :development
 gem 'ransack'
 gem 'acts-as-taggable-on'
 gem 'jquery-rails'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
