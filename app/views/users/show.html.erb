@@ -1,10 +1,13 @@
 user_mypage
+<% if user_signed_in? && current_user.id == @user.id %>
 <%= link_to "マイページ編集", edit_user_path(@user) %>
+<% end %>
 プロフィール画像
 <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'png' %>
 <th><%= @user.name %></th>
 <th><%= @user.body %></th>
 
+<%= render 'posts/index',posts: @posts, cut_times:@cut_time %>
 
 
 <%#= link_to "フォロー", user_followings(@user) %>
