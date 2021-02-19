@@ -4,7 +4,7 @@
   <div>
     <tr>
 <td><%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, format: 'png' %></td>
-    <td>ユーザーネーム<%= link_to @user.name, user_path %></td>
+    <td>ユーザーネーム<%#= link_to @user.name, user_path %></td>
     </tr>
     <tr>
 <td><%= link_to post.title, post_path(post) %></td>

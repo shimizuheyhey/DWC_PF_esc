@@ -9,30 +9,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-        <% if user_signed_in? %>
-        <%= link_to '投稿フォーム', new_post_path %>
-        <%= link_to 'my page', user_path(current_user) %>
-        <%= link_to 'Post一覧', posts_path %>
-        <%= link_to 'User一覧', users_path %>
-        <%= link_to 'お気に入り一覧', user_bookmark_path([:id]) %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "あああああ", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-    <% end %>
+
+    <%= render 'layouts/head' %>
     <%= yield %>
+
+    <%= render 'layouts/footer' %>
+
   </body>
 </html>
