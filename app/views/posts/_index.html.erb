@@ -1,14 +1,14 @@
 <table class='table table-hover table-inverse'>
 
-<% @post.each do |post| %>
+<% post.each do |post| %>
   <div>
     <tr>
 <td><%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, format: 'png' %></td>
-    <td>ユーザーネーム<%#= link_to @user.name, user_path %></td>
+    <td>Name:<%= link_to post.user.name, user_path %>さん</td>
     </tr>
     <tr>
 <td><%= link_to post.title, post_path(post) %></td>
-<td><%#= @cut_time.minute %>分<%#= @cut_time.second %>秒時間を節約できます</td>
+<td><%#= post.cut_times.minute(post.user_id) %>分<%#= post.cut_time.second %>秒時間を節約できます</td>
 </tr>
   </div>
 <% end %>

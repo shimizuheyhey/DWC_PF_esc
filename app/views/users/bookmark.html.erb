@@ -1,5 +1,7 @@
-bookmark
-
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+<p><%= "合計短縮時間#{@minute}分#{@second}秒"  %></p>
 <table>
   <caption>ブックマーク一覧</caption>
   <thead>
@@ -7,6 +9,7 @@ bookmark
       <th>投稿者名</th>
       <th>タイトル</th>
       <th>本文</th>
+      <th>短縮時間</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +22,11 @@ bookmark
           <% end %>
         </td>
         <td><%= bookmark.post.body %></td>
+        <td><%#= bookmark.cut_time.second %></tb>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
+</div>
