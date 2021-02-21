@@ -6,8 +6,10 @@ class Post < ApplicationRecord
   attachment :image
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :cut_times, dependent: :destroy
-  accepts_nested_attributes_for :cut_times, allow_destroy: true
+  #has_many :cut_times, dependent: :destroy
+  has_one :cut_time, dependent: :destroy
+
+  accepts_nested_attributes_for :cut_time, allow_destroy: true
   has_many :bookmarks, dependent: :destroy
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?

@@ -1,14 +1,18 @@
 <table class='table table-hover table-inverse'>
 
-<% post.each do |post| %>
+<% posts.each do |post| %>
   <div>
     <tr>
-<td><%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, format: 'png' %></td>
-    <td>Name:<%= link_to post.user.name, user_path %>さん</td>
+<td><%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, fallback:"no_image.jpg",size:'30x30' %></td>
+    <td><%= link_to post.user.name, user_path(post.user) %>さん</td>
     </tr>
     <tr>
 <td><%= link_to post.title, post_path(post) %></td>
-<td><%= post.cut_times.minute(post.user_id) %>分<%#= post.cut_time.second %>秒時間を節約できます</td>
+<% if post.cut_time.minute == 0 && post.cut_time.second == 0 %>
+<td><p>こちらの記事は短縮時間を設定していません</p></td>
+<% else %>
+<td><i class="far fa-clock"></i><%= post.cut_time.minute %>min<%= post.cut_time.second %>sec</td>
+<% end %>
 </tr>
   </div>
 <% end %>

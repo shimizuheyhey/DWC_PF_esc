@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @bookmarks = Bookmark.where(user_id: current_user.id)
     total_second = 0
     @bookmarks.each do |bookmark|
-      cut_time = bookmark.post.cut_times.first
+      cut_time = bookmark.post.cut_time
 
       total_second += cut_time.minute * 60
       total_second += cut_time.second

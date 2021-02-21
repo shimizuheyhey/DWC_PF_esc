@@ -1,0 +1,25 @@
+<table>
+	<tbody>
+		<tr>
+			<td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'png' %></td>
+		</tr>
+		<tr>
+			<td>投稿数：<%= @user.posts.count %></td>
+		</tr>
+		<tr>
+			<td>お気に入り登録数：<%= @user.bookmarks.count %></td>
+		</tr>
+		<tr>
+			<td><%= @user.name %></td>
+		</tr>
+		<tr>
+			<td><%= @user.body %></td>
+		</tr>
+		<tr>
+			<td><%= link_to 'follower', user_followers_path([@user]) %></td>
+		</tr>
+		<tr>
+			<td><%= link_to 'following', user_followings_path([@user]) %></td>
+		</tr>
+	</tbody>
+</table>

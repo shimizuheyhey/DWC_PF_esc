@@ -1,16 +1,17 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
-    @cut_time = @post.cut_times.new(user_id: current_user.id )
+    @cut_time = @post.build_cut_time(user_id: current_user.id )
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    #cut_time = CutTime.new(cut_time_params["cut_times_attributes"]["0"])
-    #cut_time.user_id = current_user.id
+
+    cut_time = @post.build_cut_time(cut_time_params)
+    cut_time.user_id = current_user.id
     #@post.cut_times << cut_time
-    if @post.save
+    if @post.save && cut_time.save
       redirect_to posts_path
     else
       #byebug
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
 #total = total01 + total02
 
   def index
-     @post = Post.all
+     @posts = Post.all
      @tags = Post.tag_counts_on(:tags).most_used(20)
      #@cut_time = @post.cut_times.first
   end
@@ -32,7 +33,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @cut_time = @post.cut_times.first
+    @cut_time = @post.cut_time
   end
 
   def edit
@@ -64,11 +65,11 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :body, :tag_list, cut_times_attributes: [:id, :user_id, :post_id, :minute, :second] )
+    params.require(:post).permit(:title, :image, :body, :tag_list)
   end
 
   def cut_time_params
-        params.require(:post).permit(
-      cut_times_attributes: [:id, :post_id, :minute, :second])
+    params.require(:post).permit(cut_times: [:minute, :second])[:cut_times]
+
   end
 end

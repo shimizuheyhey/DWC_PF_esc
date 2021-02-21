@@ -1,18 +1,11 @@
 
+<div class='container px-5 px-sm-0'>
+  <div class="row p-3">
 <% if user_signed_in? && current_user.id == @user.id %>
 <%= link_to "マイページ編集", edit_user_path(@user) %>
 <% end %>
-プロフィール画像
-<%= attachment_image_tag @user, :profile_image, :fill, 30, 30, format: 'png' %>
-投稿数：<%= @user.posts.count %>
-お気に入り登録数：<%= @user.bookmarks.count %>
-<th><%= @user.name %></th>
-<th><%= @user.body %></th>
 
-<%= render 'posts/index', post: @post %>
-
-
-<%#= link_to "フォロー", user_followings(@user) %>
-
-<%#= link_to "フォロワー", user_followers(@users) %>
-
+<%= render 'mypage' %>
+<%= render 'posts/index', posts: @post %>
+</div>
+</div>

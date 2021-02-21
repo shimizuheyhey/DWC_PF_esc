@@ -8,7 +8,6 @@
     <tr>
       <th>投稿者名</th>
       <th>タイトル</th>
-      <th>本文</th>
       <th>短縮時間</th>
     </tr>
   </thead>
@@ -21,8 +20,7 @@
             <%= bookmark.post.title %>
           <% end %>
         </td>
-        <td><%= bookmark.post.body %></td>
-        <td><%#= bookmark.cut_time.second %></tb>
+        <td><%= bookmark.post.cut_time.minute %>分<%= bookmark.post.cut_time.second %>秒</tb>
       </tr>
     <% end %>
   </tbody>
