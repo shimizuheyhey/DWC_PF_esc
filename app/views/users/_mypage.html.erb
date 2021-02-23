@@ -1,34 +1,41 @@
-<table>
+<table class='table bg-white'>
 	<tbody>
 		<tr>
-			<td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'png' %></td>
+			<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'png' %></td>
 		</tr>
 		<tr>
-			<td>投稿数：<%= @user.posts.count %></td>
+			<td>投稿数：<%= user.posts.count %></td>
 		</tr>
 		<tr>
-			<td>お気に入り登録数：<%= @user.bookmarks.count %></td>
+			<td>お気に入り登録数：<%= user.bookmarks.count %></td>
 		</tr>
 		<tr>
-			<td><%= @user.name %></td>
+			<td><%= user.name %></td>
 		</tr>
 		<tr>
-			<td><%= @user.body %></td>
+			<td><%= user.body %></td>
 		</tr>
 		<tr>
-			<td><%= link_to 'follower', user_followers_path([@user]) %></td>
+			<td><%= link_to 'follower', user_followers_path([user]) %></td>
 		</tr>
 		<tr>
-			<td><%= link_to 'following', user_followings_path([@user]) %></td>
+			<td><%= link_to 'following', user_followings_path([user]) %></td>
 		</tr>
 		<tr>
 			<td>
-					    <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+		  <% if current_user != user %>
+		  <% if user.following_by?(current_user) %>
+            <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
           <% else %>
-            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+            <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
           <% end %>
           </td>
+          <td>
+          <% if user_signed_in? && current_user.id == @user.id %>
+		  <%=  link_to "マイページ編集", edit_user_path(@user) %>
+		<% end %>
+		  </td>
     </tr>
 	</tbody>
 </table>

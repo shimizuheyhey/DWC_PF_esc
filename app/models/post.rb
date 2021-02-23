@@ -11,6 +11,9 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :cut_time, allow_destroy: true
   has_many :bookmarks, dependent: :destroy
+
+  validates :title, presence: true
+  validates :body, presence: true, length: {maximum: 1000}
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end

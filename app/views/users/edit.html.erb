@@ -1,8 +1,10 @@
 user edit
 
 <%= form_with model: @user,local:true do |f| %>
+<%= render 'layouts/errors', model: f.object %>
   <div class="form-group">
     <%= f.attachment_field :profile_image %>
+
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control book_title' %>
   </div>

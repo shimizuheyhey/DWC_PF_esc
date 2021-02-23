@@ -17,7 +17,8 @@ has_many :favorites, dependent: :destroy
 #cuttime
 has_many :cut_times, dependent: :destroy
 has_many :bookmarks, dependent: :destroy
-
+validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
+validates :body, length: { maximum: 50 }
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end

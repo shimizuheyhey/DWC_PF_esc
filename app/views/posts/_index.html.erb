@@ -1,11 +1,11 @@
-<div class="container-fluid bg-light">
+<div class="container-fluid bg-white">
   <div class="row">
     <div class='table'>
       <% posts.each do |post| %>
         <div class="border-top border-primary">
           <div class="header pl-2 pt-1">
           <%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, fallback:"no_image.jpg",size:'30x30' %>
-          <%= link_to post.user.name, user_path(post.user) %>さん
+          <%= link_to post.user.name, user_path(post.user) %>さん　<%= post.updated_at.strftime("%Y-%m-%d %H:%M") %>に投稿
             </div>
             <div class="body pl-2">
             <h3><%= link_to post.title, post_path(post) %></h3>
@@ -17,7 +17,8 @@
             <% else %>
             <i class="far fa-clock"></i><%= post.cut_time.minute %>min<%= post.cut_time.second %>sec
             <div class="text-right">
-            <i class="far fa-thumbs-up"></i><%= post.favorites.count %><i class="far fa-bookmark"></i><%= post.bookmarks.count %>
+              
+            <i class="far fa-thumbs-up"></i><%= post.favorites.count %><i class="far fa-bookmark yellow"></i><%= post.bookmarks.count %>
             </tr>
             </div>
           </div>

@@ -1,5 +1,14 @@
 <div class='container'>
   <div class='row'>
+  	<%#error_message%>
+   <% if @post.errors.any? %>
+    <div id="error_explanation">
+     <h3><%= @post.errors.count %>error prohibited this obj from being saved:</h3>
+     <ul>
+       <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      <%#error_message%>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
  <%= form_with model: @post, local:true do |f| %>
 <table>

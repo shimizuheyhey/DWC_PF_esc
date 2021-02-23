@@ -1,17 +1,16 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-<p><%= "合計短縮時間#{@minute}分#{@second}秒"  %></p>
-<table>
-  <caption>ブックマーク一覧</caption>
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>タイトル</th>
-      <th>短縮時間</th>
-    </tr>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+        <div class="border border-primary"><%= "合計短縮時間#{@minute}分#{@second}秒"%></div>
+          <table class="table bg-light">
+          <thead class="table">
+            <tr>
+            <th>投稿者名</th>
+            <th>タイトル</th>
+            <th>短縮時間</th>
+      </tr>
   </thead>
-  <tbody>
+  <tbody class="table">
     <% @bookmarks.each do |bookmark| %>
       <tr>
         <td><%= bookmark.post.user.name %></td>
