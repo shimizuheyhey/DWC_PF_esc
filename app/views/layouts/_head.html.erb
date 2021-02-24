@@ -2,7 +2,11 @@
 <header>
   <nav class="navbar navbar-expand-sm navbar-dark bg-success">
     <div class="container-fluid">
+      <% if user_signed_in? %>
       <a class="navbar-brand" href="/posts"><span>Every<br>Second<br>Counts!</span></a>
+      <% else %>
+      <a class="navbar-brand" href="/"><span>Every<br>Second<br>Counts!</span></a>
+      <% end %>
       <div>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,8 +22,7 @@
           <li><%= link_to 'お気に入り一覧', user_bookmark_path([:id]) %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><h2><%= link_to "ESC", "/", class:"text-dark" %></h2></li>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "新規登録　", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
         <% end %>
         </ul>

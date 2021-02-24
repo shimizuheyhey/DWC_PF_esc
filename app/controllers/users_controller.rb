@@ -4,6 +4,7 @@ class UsersController < ApplicationController
    #@user = User.all
     @q = User.ransack(params[:q])
     @user = @q.result(distinct: true)
+    @users = User.all
   end
 
   def edit

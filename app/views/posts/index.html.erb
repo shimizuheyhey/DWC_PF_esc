@@ -1,15 +1,18 @@
-<%#post_index%>
-<div class='container px-5 px-sm-0'>
+
+<div class='container-fluid  px-5 px-sm-3'>
   <div class='row'>
-    <% @tags.each do |tag| %>
-      <span style="background-color: #e9e9e9; border-radius: 5px;">
-        <%#= link_to "#{tag.name}(#{tag.taggings_count})", tags_path(tag.name) %>
+    <div class='col-md-8 p-1'>
+    <%# @tags.each do |tag| %>
+      <%#<span style="background-color: #e9e9e9; border-radius: 5px;">
+
       </span>
       <% end %>
+
     <%= render 'posts/index', posts: @posts %>
+    </div>
+    <div class="col-md-3 ">
+      <%= render 'posts/rank', ranks: @ranks %>
+    </div>
+
   </div>
 </div>
-
-<%#= @ranks.each do |note| %>
-<%#= link_to note.title, post_path(@post) %>
-<%# end %>

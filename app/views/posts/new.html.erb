@@ -5,8 +5,11 @@
     <div id="error_explanation">
      <h3><%= @post.errors.count %>error prohibited this obj from being saved:</h3>
      <ul>
+
        <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+        <% end %>
+        </ul>
         <% end %>
       <%#error_message%>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">

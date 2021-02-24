@@ -28,7 +28,7 @@ class PostsController < ApplicationController
      @posts = Post.all
      @tags = Post.tag_counts_on(:tags).most_used(20)
      #@cut_time = @post.cut_times.first
-     #@ranks = @posts.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+     @ranks = @posts.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 
   def show
