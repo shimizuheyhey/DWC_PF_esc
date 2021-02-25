@@ -1,30 +1,33 @@
-post edit
-<div class='container px-5 px-sm-0'>
+<div class='container'>
   <div class='row'>
-<%= form_with model: @post,local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control book_title' %>
+    <div class="col-sm-12">
+        <%= form_with model: @post,local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control book_title' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, :size=>"90x10", class: 'form-control book_body' %>
+      </div>
+        <h5>CutTime</h5>
+      <div class="form-group">
+        <%= f.fields_for :cut_time, local:true do |fa| %>
+      </div>
+        <h4>分</h4>
+      <div class="form-group">
+        <%= fa.number_field :minute, min: 0, max: 59, value: fa.object.minute %>
+      </div>
+        <h4>秒</h4>
+      <div class="form-group">
+        <%= fa.number_field :second, min: 0, max: 99, value: fa.object.second %>
+        <%= fa.hidden_field :user_id %>
+      </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-success' %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control book_body' %>
-  </div>
-  <h5>CutTime</h5>
-  <div class="form-group">
-<%= f.fields_for :cut_time, local:true do |fa| %>
 </div>
-  <h4>分</h4>
-  <div class="form-group">
-<%= fa.number_field :minute, min: 0, max: 59, value: fa.object.minute %>
-</div>
-  <h4>秒</h4>
-  <div class="form-group">
-<%= fa.number_field :second, min: 0, max: 99, value: fa.object.second %>
-<%= fa.hidden_field :user_id %>
-</div>
-<% end %>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
-  </div>
-<% end %>

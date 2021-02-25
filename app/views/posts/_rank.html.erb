@@ -4,7 +4,7 @@
   <tbody>
     <tr>
     <td>No.<%= i %></td>
-    <td><%= rank.title %></td>
+    <td><%= link_to rank.title, post_path(rank) %></td>
     </tr>
     <% end %>
   </tbody>

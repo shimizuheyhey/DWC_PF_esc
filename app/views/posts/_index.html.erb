@@ -1,10 +1,13 @@
 <div class="container-fluid bg-white">
   <div class="row">
     <div class='table'>
+      <%# if @post.blank? %>
+      <%#<h3>このユーザーは投稿していません</h3>
+      <%# else %>
       <% posts.each do |post| %>
         <div class="border-top border-primary">
           <div class="header pl-2 pt-1">
-            <%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, fallback:"no_image.jpg",size:'30x30' %>
+            <%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, fallback:"no_image_square.jpg",size:'30x30' %>
             <%= link_to post.user.name, user_path(post.user) %>さん　<%= post.updated_at.strftime("%Y-%m-%d %H:%M") %>に投稿
           </div>
           <div class="body pl-2">
@@ -24,6 +27,7 @@
           </div>
         </div>
       <% end %>
+      <%# end %>
     </div>
   </div>
 </div>
