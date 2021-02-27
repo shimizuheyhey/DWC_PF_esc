@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def index
      #@posts = Post.all
-     @posts = Post.page(params[:page]).per(2)
+     @posts = Post.page(params[:page]).per(5)
      @tags = Post.tag_counts_on(:tags).most_used(20)
      #@cut_time = @post.cut_times.first
      @ranks = @posts.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
