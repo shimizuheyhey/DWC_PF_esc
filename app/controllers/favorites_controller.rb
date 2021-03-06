@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       favorite.save
-      redirect_to post_path(post)
+    redirect_to post_path(post)
     end
   end
 

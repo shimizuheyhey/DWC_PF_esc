@@ -12,11 +12,16 @@ class PostsController < ApplicationController
     cut_time.user_id = current_user.id
     #@post.cut_times << cut_time
     if @post.save && cut_time.save
+    tags = Vision.get_image_data(@post.image)
+    tags.each do |tag|
+      @post.tags.create(name: tag)
+    end
       redirect_to posts_path
     else
       #byebug
       render 'new'
     end
+
   end
 
 #array = @post.pluck(:分数のカラム)
